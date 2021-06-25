@@ -1,5 +1,26 @@
 set nocompatible
 
+call plug#begin('~/.vim/plugged')
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+Plug 'sheerun/vim-polyglot'
+Plug 'edkolev/tmuxline.vim'
+Plug 'tpope/vim-fugitive'
+Plug 'ctrlpvim/ctrlp.vim'
+call plug#end()
+
 set number
 set relativenumber
+
+set expandtab
+set tabstop=2
+set softtabstop=2
+set shiftwidth=2
+
+let g:tmuxline_powerline_separators = 0
+set nowrap
+
+let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files']
+let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#formatter = 'unique_tail'
 
