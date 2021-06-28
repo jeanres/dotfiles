@@ -1,5 +1,28 @@
+export PATH=$PATH:/usr/local/bin
+
 export NVM_DIR="$HOME/.nvm"
 [ -s "/usr/local/opt/nvm/nvm.sh" ] && . "/usr/local/opt/nvm/nvm.sh"  # This loads nvm
 [ -s "/usr/local/opt/nvm/etc/bash_completion.d/nvm" ] && . "/usr/local/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion
 
 eval "$(rbenv init - zsh)"
+
+# aliases
+alias gc="git commit -m"
+alias gs="git status"
+alias gpo="git push -u origin HEAD"
+alias gl="git log"
+alias gb="git checkout -b"
+alias ga="git add"
+alias gp="git pull"
+alias gf="git fetch"
+alias gco="git checkout"
+# git branch
+autoload -Uz vcs_info
+precmd() { vcs_info }
+
+# Format the vcs_info_msg_0_ variable
+zstyle ':vcs_info:git:*' formats 'on branch %b'
+
+# Set up the prompt (with git branch name)
+setopt PROMPT_SUBST
+PROMPT='${PWD/#$HOME/~} ${vcs_info_msg_0_} > '
