@@ -1,12 +1,31 @@
+set termguicolors
+
+set ttimeout
+set ttimeoutlen=0
+
+call plug#begin('~/.vim/plugged')
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf.vim'
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'chriskempson/base16-vim'
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+Plug 'dense-analysis/ale'
+call plug#end()
+
+set number
 set relativenumber
 
-noremap <Up> <Nop>
-noremap <Down> <Nop>
-noremap <Left> <Nop>
-noremap <Right> <Nop>
+nnoremap <Up> <Nop>
+nnoremap <Down> <Nop>
+nnoremap <Left> <Nop>
+nnoremap <Right> <Nop>
 
-noremap <Leader>s :update<CR>
-noremap <Leader>vr :source $MYVIMRC<CR>
+map <Space> <Leader>
+
+nnoremap <Leader>s :update<CR>
+nnoremap <Leader>r :source $MYVIMRC<CR>
+nnoremap <silent> <leader><space> :Files<CR>
 
 set laststatus=2
 
@@ -18,3 +37,16 @@ set nobackup
 filetype plugin indent on
 
 set nowrap
+
+if filereadable(expand("~/.vimrc_background"))
+	let base16colorspace=256
+	source ~/.vimrc_background
+endif
+
+set cursorline
+set expandtab
+" show existing tab with 2 spaces width
+set tabstop=2
+set softtabstop=2
+" when indenting with '>', use 2 spaces width
+set shiftwidth=2

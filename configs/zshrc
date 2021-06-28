@@ -26,3 +26,8 @@ zstyle ':vcs_info:git:*' formats 'on branch %b'
 # Set up the prompt (with git branch name)
 setopt PROMPT_SUBST
 PROMPT='${PWD/#$HOME/~} ${vcs_info_msg_0_} > '
+
+BASE16_SHELL="$HOME/.config/base16-shell/"
+[ -n "$PS1" ] && \
+	[ -s "$BASE16_SHELL/profile_helper.sh" ] && \
+	eval "$("$BASE16_SHELL/profile_helper.sh")"
